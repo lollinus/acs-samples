@@ -17,8 +17,8 @@ AllowAllParametersOfDeclarationOnNextLine: true
 AllowShortEnumsOnASingleLine: true
 AllowShortBlocksOnASingleLine: Never
 AllowShortCaseLabelsOnASingleLine: false
-AllowShortFunctionsOnASingleLine: All
-AllowShortLambdasOnASingleLine: All
+AllowShortFunctionsOnASingleLine: false
+AllowShortLambdasOnASingleLine: false
 AllowShortIfStatementsOnASingleLine: Never
 AllowShortLoopsOnASingleLine: false
 AlwaysBreakAfterDefinitionReturnType: None
@@ -30,19 +30,19 @@ AttributeMacros:
 BinPackArguments: true
 BinPackParameters: true
 BraceWrapping:
-  AfterCaseLabel:  false
-  AfterClass:      false
-  AfterControlStatement: Never
-  AfterEnum:       false
-  AfterFunction:   false
-  AfterNamespace:  false
+  AfterCaseLabel:  true
+  AfterClass:      true
+  AfterControlStatement: Always
+  AfterEnum:       true
+  AfterFunction:   true
+  AfterNamespace:  true
   AfterObjCDeclaration: false
-  AfterStruct:     false
+  AfterStruct:     true
   AfterUnion:      false
   AfterExternBlock: false
   BeforeCatch:     false
-  BeforeElse:      false
-  BeforeLambdaBody: false
+  BeforeElse:      true
+  BeforeLambdaBody: true
   BeforeWhile:     false
   IndentBraces:    false
   SplitEmptyFunction: true
@@ -50,7 +50,7 @@ BraceWrapping:
   SplitEmptyNamespace: true
 BreakBeforeBinaryOperators: None
 BreakBeforeConceptDeclarations: true
-BreakBeforeBraces: Attach
+BreakBeforeBraces: Custom
 BreakBeforeInheritanceComma: false
 BreakInheritanceList: BeforeColon
 BreakBeforeTernaryOperators: true
@@ -66,7 +66,7 @@ ConstructorInitializerIndentWidth: 4
 ContinuationIndentWidth: 4
 Cpp11BracedListStyle: true
 DeriveLineEnding: true
-DerivePointerAlignment: false
+DerivePointerAlignment: true
 DisableFormat:   false
 EmptyLineAfterAccessModifier: Never
 EmptyLineBeforeAccessModifier: LogicalBlock
@@ -80,16 +80,37 @@ IfMacros:
   - KJ_IF_MAYBE
 IncludeBlocks:   Preserve
 IncludeCategories:
+IncludeCategories:
+  - Regex:           '^<ext/.*\.h>'
+    Priority:        2
+    SortPriority:    0
+    CaseSensitive:   false
   - Regex:           '^"(llvm|llvm-c|clang|clang-c)/'
     Priority:        2
     SortPriority:    0
     CaseSensitive:   false
+  - Regex:           '^<.*\.h>'
+    Priority:        1
+    SortPriority:    0
+    CaseSensitive:   false
+  - Regex:           '^<.*'
+    Priority:        2
+    SortPriority:    0
+    CaseSensitive:   false
+  - Regex:           '(Mock\.hpp)"$'
+    Priority:        5
+    SortPriority:    0
+    CaseSensitive:   true
+  - Regex:           '^"schema/.*\.pb\.h"$'
+    Priority:        4
+    SortPriority:    0
+    CaseSensitive:   true
   - Regex:           '^(<|"(gtest|gmock|isl|json)/)'
-    Priority:        3
+    Priority:        1
     SortPriority:    0
     CaseSensitive:   false
   - Regex:           '.*'
-    Priority:        1
+    Priority:        3
     SortPriority:    0
     CaseSensitive:   false
 IncludeIsMainRegex: '(Test)?$'
@@ -126,11 +147,11 @@ PenaltyBreakTemplateDeclaration: 10
 PenaltyExcessCharacter: 1000000
 PenaltyReturnTypeOnItsOwnLine: 60
 PenaltyIndentedWhitespace: 0
-PointerAlignment: Right
+PointerAlignment: Left
 PPIndentWidth:   -1
 ReferenceAlignment: Pointer
 ReflowComments:  true
-ShortNamespaceLines: 1
+ShortNamespaceLines: 0
 SortIncludes:    CaseSensitive
 SortJavaStaticImport: Before
 SortUsingDeclarations: true
@@ -147,7 +168,7 @@ SpaceAroundPointerQualifiers: Default
 SpaceBeforeRangeBasedForLoopColon: true
 SpaceInEmptyBlock: false
 SpaceInEmptyParentheses: false
-SpacesBeforeTrailingComments: 1
+SpacesBeforeTrailingComments: 2
 SpacesInAngles:  Never
 SpacesInConditionalStatement: false
 SpacesInContainerLiterals: true
